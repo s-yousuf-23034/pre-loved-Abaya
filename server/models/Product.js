@@ -44,7 +44,9 @@ const productSchema = new Schema({
   images: [String],
   deal: {
     newprice: Number
-  }
+  },
+  status: { type: String, enum: ['pending', 'approved'], default: 'pending' },
+
 
 })
 

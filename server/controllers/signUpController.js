@@ -6,13 +6,16 @@ const handleSignUp = async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
   // console.log(req.body);
   if (email && password && firstName && lastName) {
-    // validate input 
     const emailTest = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const validEmail = emailTest.test(email)
-    const validPassword = password.length > 7;
-    if (!validEmail || !validPassword) {
-      res.status(400).json({ success: false, msg: 'invalid email or password' })
+    const validPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@?])[A-Za-z\d@?]{8,20}$/;
+    if (!validEmail) {
+      res.status(400).json({ success: false, msg: 'invalid email' })
       return
+    }
+    if(!validPassword){
+      return res.status(400).json({ success: false, msg: 'Password must be at least 8 characters long and at least one letter and one number and one special character' })
+
     }
 
     try {
@@ -42,13 +45,16 @@ const handleSignUp = async (req, res) => {
 const handleSellerSignUp = async (req, res) => {
   const { email, password, shopName } = req.body;
   if (email && password && shopName) {
-    // validate input 
     const emailTest = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const validEmail = emailTest.test(email)
-    const validPassword = password.length > 7;
-    if (!validEmail || !validPassword) {
-      res.status(400).json({ success: false, msg: 'invalid email or password' })
+    const validPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@?])[A-Za-z\d@?]{8,20}$/;
+    if (!validEmail) {
+      res.status(400).json({ success: false, msg: 'invalid email' })
       return
+    }
+    if(!validPassword){
+      return res.status(400).json({ success: false, msg: 'Password must be at least 8 characters long and at least one letter and one number and one special character' })
+
     }
 
     try {

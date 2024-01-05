@@ -26,6 +26,8 @@ import SellerPage from "./pages/sellerPage/SellerPage";
 import Chat from "./pages/chat/Chat";
 import SingleChat from "./pages/singleChat/SingleChat";
 import PersistLogin from "./components/PersistLogin";
+import AdminLayout from "./Layouts/AdminLayout";
+import AdminDashboard from "./pages/AdminDashboard/page";
 
 function App() {
   return (
@@ -77,6 +79,15 @@ function App() {
             <Route path="orders/:id" element={<SellerSingleOrder />} />
             <Route path="chat" element={<Chat />} />
             <Route path="chat/:id" element={<SingleChat />} />
+          </Route>
+        </Route>
+
+        {/* protect for admin only */}
+        <Route element={<RequireAuth allowedRoles={['admin']} />}>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="products" element={<SellerProducts />} />
+            <Route path="products/:id" element={<SellerSingleProduct />} />
           </Route>
         </Route>
 

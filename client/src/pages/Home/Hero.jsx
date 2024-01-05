@@ -64,9 +64,11 @@ const Hero = () => {
         <div className="relative md:w-5/6 lg:w-2/3 max-w-7xl pt-8 md:pt-16 pb-8 px-8 mx-auto">
           <div className='flex flex-col-reverse gap-5 md:gap-0 md:flex-row justify-between items-end md:items-start md:pt-8'>
             <div className="md:w-2/3 md:max-w-3xl">
-              <h1 className="text-5xl  text-center md:text-left text-primary font-bold ">Lorem title Ipsum</h1>
+              <h1 className="text-5xl  text-center md:text-left text-primary font-bold ">Pre Loved Abaya Store</h1>
               <p className="text-xl font-semibold text-center md:text-left text-zinc-800 my-7">
-                Discover a world of endless possibilities with our curated selection of products from top-rated vendors, all in one convenient online marketplace.
+              Our curated collection of pre-loved abayas embodies timeless style and
+                conscious fashion choices. Each piece tells a unique story,
+                blending tradition with modern allure
               </p>
             </div>
             {!auth.accessToken && (
